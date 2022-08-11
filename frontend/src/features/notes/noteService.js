@@ -35,6 +35,8 @@ const deleteNote = async (noteId, token) => {
     },
   }
 
+  console.log("delete" + noteId)
+
   const response = await axios.delete(API_URL + noteId, config)
 
   return response.data

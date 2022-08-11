@@ -54,6 +54,7 @@ export const createNote = createAsyncThunk(
     async (id, thunkAPI) => {
       try {
         const token = thunkAPI.getState().auth.user.token
+        console.log("delete" + id)
         return await noteService.deleteNote(id, token)
       } catch (error) {
         const message =
@@ -109,7 +110,7 @@ export const createNote = createAsyncThunk(
             state.isLoading = false
             state.isSuccess = true
             state.notes = state.notes.filter(
-              (note) => note.id !== action.payload.id
+              (note) => note._id !== action.payload.id
             )
           })
           .addCase(deleteNote.rejected, (state, action) => {

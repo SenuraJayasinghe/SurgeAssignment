@@ -11,7 +11,10 @@ function NoteItem({ note }) {
       <div>{new Date(note.createdAt).toLocaleString('en-US')}</div>
       <h2>{note.title}</h2>
       <p>{note.description}</p>
-      <button onClick={() => dispatch(deleteNote(note._id))} className='close'>
+      <button onClick={() => {
+        console.log("delete" + note._id)
+        dispatch(deleteNote(note._id))
+      }} className='close'>
         X
       </button>
     </div>
