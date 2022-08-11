@@ -41,6 +41,25 @@ export const getNotes = createAsyncThunk('notes/getAll', async (_, thunkAPI) => 
     }
 })
 
+// Update user note
+export const updateNote = createAsyncThunk(
+    "notes/updateNote",
+    async (noteData, thunkAPI) => {
+      try {
+        const token = thunkAPI.getState().auth.user.token;
+        return await noteService.updateNote(noteData, token);
+      } catch (error) {
+        const message =
+          (error.response &&
+            error.response.data &&
+            error.response.data.message) ||
+          error.message ||
+          error.toString();
+        return thunkAPI.rejectWithValue(message);
+      }
+    }
+  );
+
 // Delete user note
 export const deleteNote = createAsyncThunk('notes/delete', async (id, thunkAPI) => {
     try {
@@ -92,6 +111,19 @@ export const noteSlice = createSlice({
                 state.isError = true
                 state.message = action.payload
                 
+            })
+            .addCase(updateNote.pending, (state) => {
+                state.isLoading = true;
+            })
+            .addCase(updateNote.fulfilled, (state, action) => {
+                state.isLoading = false;
+                state.isSuccess = true;
+                state.notes = [...state.notes.filter(note => note._id !== action.payload._id), action.payload]
+            })
+            .addCase(updateNote.rejected, (state, action) => {
+                state.isLoading = false;
+                state.isError = true;
+                state.message = action.payload;
             })
             .addCase(deleteNote.pending, (state) => {
                 state.isLoading = true
