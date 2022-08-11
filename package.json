@@ -1,0 +1,31 @@
+{
+  "name": "surgeassignment",
+  "version": "1.0.0",
+  "description": "Surge Assignment",
+  "main": "server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "server": "nodemon backend/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SenuraJayasinghe/SurgeAssignment.git"
+  },
+  "author": "Senura Jayasinghe",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SenuraJayasinghe/SurgeAssignment/issues"
+  },
+  "homepage": "https://github.com/SenuraJayasinghe/SurgeAssignment#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "express-async-handler": "^1.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.5.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  }
+}
