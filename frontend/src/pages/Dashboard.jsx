@@ -1,64 +1,63 @@
-import { useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { useSelector, useDispatch } from 'react-redux'
-import NoteForm from '../components/NoteForm'
-import NoteItem from '../components/NoteItem'
+import {useEffect} from 'react'
+import {useNavigate} from 'react-router-dom'
+import {useSelector, useDispatch} from 'react-redux'
+// import GoalForm from '../components/GoalForm'
+// import GoalItem from '../components/GoalItem'
 import Spinner from '../components/Spinner'
-import { getNotes, reset } from '../features/notes/noteSlice'
+// import { getGoals, reset } from '../features/goals/goalSlice'
+
+
 
 function Dashboard() {
+
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
-  const { user } = useSelector((state) => state.auth)
-  const { notes, isLoading, isError, message } = useSelector(
-    (state) => state.notes
-  )
+  const {user} = useSelector((state) => state.auth) //used to get the user
+//   const {goals, isLoading, isError, message} = useSelector((state) => state.goals)
 
-  useEffect(() => {
-    if (isError) {
-      console.log(message)
-    }
 
-    if (!user) {
-      navigate('/login')
-    }
 
-    dispatch(getNotes())
+//   useEffect(() => {
 
-    return () => {
-      dispatch(reset())
-    }
-  }, [user, navigate, isError, message, dispatch])
+//     if(isError) {
+//       console.log(message);
+//     }
 
-  if (isLoading) {
-    return <Spinner />
-  }
+//     if(!user) {
+//       navigate('/login')
+//     }
 
-  return (
-   <>
-      <section className='heading'>
-        <h1>Welcome {user && user.firstName}</h1>
-        <p>Student Notes Dashboard</p>
-      </section>
+//     dispatch(getGoals())
 
-      <NoteForm />
-      
-      <section className='content'>
-        {notes.length > 0 ? (
-          <div className='goals'>
-            {notes.map((note) => (
-              <NoteItem key={note._id} note={note} />
-            ))}
-          </div>
-        ) : (
-          <h3>You have not made any notes</h3>
-        )}
-      </section>
+//     return () => {
+//       dispatch(reset())
+//     }
+//   }, [user, navigate, isError, message, dispatch])
 
-     
-    </>
-  )
+//   if(isLoading) {
+//     return <Spinner />
+//   }
+
+  return <>
+    <section className='heading'>
+      {/* code below: if user (i.e. logged in), show name */}
+      <h1>Welcome {user && user.name}</h1>
+      <p>Goals Dashboard</p>
+    </section>
+    
+    {/* <GoalForm />  */}
+
+    {/* <section className="content">
+      {goals.length > 0 ? (
+        <div className="goals">
+          {goals.map((goal) => (
+            <GoalItem key={goal._id} goal={goal} />
+          ))}
+        </div>
+      ) : (<h3>You have not set any goals</h3>)}
+    </section> */}
+  </>
 }
 
 export default Dashboard
