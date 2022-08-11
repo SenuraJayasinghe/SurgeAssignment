@@ -16,7 +16,6 @@ const createNote = async (noteData, token) => {
 
 // Get user notes
 const getNotes = async (token) => {
-  console.log("Service token " + token)
   const config = {
     headers: {
       Authorization: `Bearer ${token}`,

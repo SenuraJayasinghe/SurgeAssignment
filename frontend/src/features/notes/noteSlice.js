@@ -29,7 +29,6 @@ export const createNote = createAsyncThunk('notes/create', async (noteData, thun
 export const getNotes = createAsyncThunk('notes/getAll', async (_, thunkAPI) => {
     try {
         const token = thunkAPI.getState().auth.user.token
-        console.log("This is slice token "+token)
         return await noteService.getNotes(token) 
     } catch (error) {
         const message = 

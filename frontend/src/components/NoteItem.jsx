@@ -1,9 +1,16 @@
 import {useDispatch} from 'react-redux'
+import { useNavigate } from "react-router-dom";
 import {deleteNote} from '../features/notes/noteSlice'
 
 function NoteItem({note}) {
 
     const dispatch = useDispatch()
+
+    let navigate = useNavigate(); 
+    const toUpdateNote = () =>{ 
+      let path = `/register`; 
+      navigate(path);
+    }
 
   return (
     <div className="goal">
@@ -15,8 +22,13 @@ function NoteItem({note}) {
         <button onClick={() => dispatch(deleteNote(note._id))} className="close">
             X
         </button>
+        <button onClick={toUpdateNote} className="update">
+           Update
+        </button>
+       
     </div>
-  )
+  ) 
 }
 
 export default NoteItem
+
