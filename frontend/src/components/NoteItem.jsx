@@ -1,5 +1,5 @@
 import {useDispatch} from 'react-redux'
-// import {deleteGoal} from '../features/goals/goalSlice'
+import {deleteNote} from '../features/notes/noteSlice'
 
 function NoteItem({note}) {
 
@@ -12,9 +12,9 @@ function NoteItem({note}) {
         </div>
         <h2>{note.title}</h2>
         <h4>{note.description}</h4>
-        {/* <button onClick={() => dispatch(deleteGoal(goal._id))} className="close">
+        <button onClick={() => dispatch(deleteNote(note._id))} className="close">
             X
-        </button> */}
+        </button>
     </div>
   )
 }

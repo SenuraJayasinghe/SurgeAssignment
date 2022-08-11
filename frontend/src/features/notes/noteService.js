@@ -28,23 +28,23 @@ const getNotes = async (token) => {
   return response.data
 }
 
-// Delete user goal
-// const deleteGoal = async (goalId, token) => {
-//   const config = {
-//     headers: {
-//       Authorization: `Bearer ${token}`,
-//      },
-//  }
+// Delete user note
+const deleteNote = async (noteId, token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+     },
+ }
 
-//   const response = await axios.delete(API_URL + goalId, config)
+  const response = await axios.delete(API_URL + noteId, config)
 
-//   return response.data
-// }
+  return response.data
+}
 
 const noteService = {
   createNote,
   getNotes,
-//   deleteGoal,
+  deleteNote,
 }
 
 export default noteService
