@@ -11,22 +11,22 @@ const createNote = async (noteData, token) => {
   }
 
   const response = await axios.post(API_URL, noteData, config)
-console.log(response.data)
   return response.data
 }
 
-// Get user goals
-// const getGoals = async (token) => {
-//   const config = {
-//     headers: {
-//       Authorization: `Bearer ${token}`,
-//     },
-//   }
+// Get user notes
+const getNotes = async (token) => {
+  console.log("Service token " + token)
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }
 
-//   const response = await axios.get(API_URL, config)
+  const response = await axios.get(API_URL, config)
 
-//   return response.data
-// }
+  return response.data
+}
 
 // Delete user goal
 // const deleteGoal = async (goalId, token) => {
@@ -41,10 +41,10 @@ console.log(response.data)
 //   return response.data
 // }
 
-const goalService = {
+const noteService = {
   createNote,
-//   getGoals,
+  getNotes,
 //   deleteGoal,
 }
 
-export default goalService
+export default noteService

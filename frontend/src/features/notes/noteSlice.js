@@ -2,7 +2,7 @@ import {createSlice, createAsyncThunk} from '@reduxjs/toolkit'
 import noteService from './noteService'
 
 const initialState = {
-    goals: [],
+    notes: [],
     isError: false,
     isSuccess: false,
     isLoading: false,
@@ -25,21 +25,22 @@ export const createNote = createAsyncThunk('notes/create', async (noteData, thun
     }
 })
 
-// Get user goals
-// export const getGoals = createAsyncThunk('goals/getAll', async (_, thunkAPI) => {
-//     try {
-//         const token = thunkAPI.getState().auth.user.token
-//         return await goalService.getGoals(token)        
-//     } catch (error) {
-//         const message = 
-//             (error.response && 
-//                 error.response.data && 
-//                 error.response.data.message) || 
-//             error.message || 
-//             error.toString()
-//         return thunkAPI.rejectWithValue(message)         
-//     }
-// })
+// Get user notes
+export const getNotes = createAsyncThunk('notes/getAll', async (_, thunkAPI) => {
+    try {
+        const token = thunkAPI.getState().auth.user.token
+        console.log("This is slice token "+token)
+        return await noteService.getNotes(token) 
+    } catch (error) {
+        const message = 
+            (error.response && 
+                error.response.data && 
+                error.response.data.message) || 
+            error.message || 
+            error.toString()
+        return thunkAPI.rejectWithValue(message)         
+    }
+})
 
 // Delete user goal
 // export const deleteGoal = createAsyncThunk('goals/delete', async (id, thunkAPI) => {
@@ -71,26 +72,28 @@ export const noteSlice = createSlice({
             .addCase(createNote.fulfilled, (state, action) => {
                 state.isLoading = false
                 state.isSuccess = true
-                state.goals.push(action.payload)
+                state.notes.push(action.payload)
             })
             .addCase(createNote.rejected, (state, action) => {
                 state.isLoading = false
                 state.isError = true
                 state.message = action.payload
                })
-//             .addCase(getGoals.pending, (state) => {
-//                 state.isLoading = true
-//             })
-//             .addCase(getGoals.fulfilled, (state, action) => {
-//                 state.isLoading = false
-//                 state.isSuccess = true
-//                 state.goals = action.payload
-//             })
-//             .addCase(getGoals.rejected, (state, action) => {
-//                 state.isLoading = false
-//                 state.isError = true
-//                 state.message = action.payload
-//             })
+            .addCase(getNotes.pending, (state) => {
+                state.isLoading = true
+
+            })
+            .addCase(getNotes.fulfilled, (state, action) => {
+                state.isLoading = false
+                state.isSuccess = true
+                state.notes = action.payload
+            })
+            .addCase(getNotes.rejected, (state, action) => {
+                state.isLoading = false
+                state.isError = true
+                state.message = action.payload
+                
+            })
 //             .addCase(deleteGoal.pending, (state) => {
 //                 state.isLoading = true
 //             })
@@ -106,6 +109,7 @@ export const noteSlice = createSlice({
 //                 state.message = action.payload
 //             })
     },
+
   })
 
 export const {reset} = noteSlice.actions

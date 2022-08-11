@@ -7,7 +7,7 @@ const User = require('../models/userModel')
 // @route GET /api/notes
 const getNotes = asyncHandler( async (req, res) => {
     const notes = await Note.find({user:req.user.id})
-    res.json(notes)
+    res.status(200).json(notes)
 })
 
 // @route POST /api/notes

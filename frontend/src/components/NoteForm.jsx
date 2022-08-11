@@ -23,7 +23,7 @@ function NoteForm() {
         <section className='form'>
             <form onSubmit={onSubmit}>
                 <div className="form-group">
-                    <label htmlFor="text">Title</label>
+                    <label htmlFor="title">Title</label>
                     <input 
                         type="text" 
                         name="title" 
@@ -32,7 +32,7 @@ function NoteForm() {
                         onChange={(e) => setTitle(e.target.value)}/>
                 </div>
                 <div className="form-group">
-                    <label htmlFor="text">Description</label>
+                    <label htmlFor="description">Description</label>
                     <input 
                         type="text" 
                         name="description" 
