@@ -12,7 +12,7 @@ const getUsers = asyncHandler( async (req, res) => {
 // @route POST /api/users
 const registerUser = asyncHandler(async (req, res) => {
     const {firstName, lastName, email, dateOfBirth,
-        mobile, password, accountType} = req.body
+        mobile, password} = req.body
 
     if( !email || !password){
        res.status(400)
@@ -38,7 +38,7 @@ const user = await User.create({
     mobile,
     status: false,
     password: hashPassword,
-    accountType
+    accountType: 'student'
 }) 
    if(user){
      res.status(201).json({
