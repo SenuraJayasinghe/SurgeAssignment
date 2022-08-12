@@ -6,7 +6,7 @@ const {protect} = require('../middleware/authMiddleware')
 router.get('/all', getUsers)
 router.post('/', registerUser)
 router.post('/login', loginUser)
-router.put('/:id', updateUser)
+router.put('/update', protect, updateUser)
 router.delete('/:id', deleteUser)
 router.get('/me',protect, getMe) 
 

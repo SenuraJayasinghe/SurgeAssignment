@@ -29,12 +29,12 @@ function NoteItem({note}) {
         <div>
             {new Date(note.createdAt).toLocaleDateString('en-US')}
         </div>
-        <button onClick={() => dispatch(deleteNote(note._id))} className="close">
-            X
-        </button>
         {updating ? (
         <section className="form">
           <form onSubmit={onSubmit}>
+          <button onClick={() => setUpdating(false)} className="close">
+            X
+        </button>
             <div className="form-group">
               <input
                 type="text"
@@ -64,6 +64,9 @@ function NoteItem({note}) {
         <span onClick={() => setUpdating(!updating)}>
         <h2>{note.title}</h2>
         <h4>{note.description}</h4>
+        <button onClick={() => dispatch(deleteNote(note._id))} className="close">
+            X
+        </button>
         </span>
       )}
     </div>

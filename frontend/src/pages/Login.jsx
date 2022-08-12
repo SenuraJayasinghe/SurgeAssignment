@@ -28,7 +28,15 @@ function Login() {
         }
 
         if(isSuccess || user){
-            navigate('/')
+            if(user.status === false){
+                navigate('/update')
+            }else{
+                if(user.accountType === 'user'){
+                    navigate('/')
+                }else{
+                    navigate('/admin')
+                }
+            }  
         }
 
         dispatch(reset())

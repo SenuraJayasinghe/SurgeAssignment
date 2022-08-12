@@ -38,7 +38,7 @@ const user = await User.create({
     mobile,
     status: false,
     password: hashPassword,
-    accountType: 'student'
+    accountType: 'user'
 }) 
    if(user){
      res.status(201).json({
@@ -71,6 +71,10 @@ const loginUser = asyncHandler(async (req, res) => {
             firstName: user.firstName,
             lastName: user.lastName,
             email: user.email,
+            mobile: user.mobile,
+            dateOfBirth: user.dateOfBirth,
+            status: user.status,
+            accountType: user.accountType,
             token: generateToken(user.id),
 
         })
@@ -102,8 +106,9 @@ const getMe = asyncHandler(async (req, res) => {
     const {firstName, lastName, email, dateOfBirth,
         mobile, password, accountType} = req.body
 
+        console.log(req.user)
 
-    const user = await User.findById(req.params.id)    
+    const user = await User.findById(req.user.id)    
 
     console.log(req.body)  
    
@@ -126,10 +131,19 @@ const getMe = asyncHandler(async (req, res) => {
         accountType
     }
 
-    const updatedUser = await User.findByIdAndUpdate(req.params.id,
+    const updatedUser = await User.findByIdAndUpdate(req.user.id,
     updateDetails,{new: true})                            
 
-    res.json(updatedUser)
+    res.json({
+        id: updatedUser.id,
+        firstName: updatedUser.firstName,
+        lastName: updatedUser.lastName,
+        email: updatedUser.email,
+        dateOfBirth: updatedUser.dateOfBirth,
+        mobile: updatedUser.mobile,
+        status: updatedUser.status,
+        accountType: updatedUser.accountType,
+    })
 })
 
 const deleteUser = asyncHandler(async (req, res) => {

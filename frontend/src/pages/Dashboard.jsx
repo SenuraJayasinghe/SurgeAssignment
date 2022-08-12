@@ -1,6 +1,7 @@
 import {useEffect} from 'react'
-import {useNavigate} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import {useSelector, useDispatch} from 'react-redux'
+import { FaUser } from 'react-icons/fa'
 import NoteForm from '../components/NoteForm'
 import NoteItem from '../components/NoteItem'
 import Spinner from '../components/Spinner'
