@@ -16,6 +16,7 @@ function NoteItem({note}) {
     const onSubmit = (e) => {
       e.preventDefault();
       dispatch(updateNote({...note, title, description}))
+      alert('Note Updated')
       setUpdating(false)
       setTitle('')
       setDescription('')

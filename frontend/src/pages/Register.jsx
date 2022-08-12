@@ -30,9 +30,12 @@ const Register = () => {
         toast.error(message)
       }
   
-      // if (isSuccess || user) {
-      //   navigate('/')
-      // }
+      if(!user) {
+        navigate('/')
+      } else if(!(user.accountType === 'admin')) {
+        alert("Unauthorized access!")
+        navigate('/')
+      }
   
       dispatch(reset())
     }, [user, isError, isSuccess, message, navigate, dispatch])

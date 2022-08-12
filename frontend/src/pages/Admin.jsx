@@ -46,13 +46,17 @@ const customStyles = {
 
       if(!user) {
         navigate('/')
-      } 
+      } else if(!(user.accountType === 'admin')) {
+        alert("Unauthorized access!")
+        navigate('/')
+      }
 
         Axios.get("/api/users/all")
             .then((res) => {
                 setStudents(res.data)
                 console.log(res.data);
             })
+
     }, [user, navigate]);   
   
           return (
