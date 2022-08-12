@@ -22,7 +22,7 @@ function Header() {
                 <Link to='/'>Add Notes</Link>
             </div>
             <ul>
-                {user ? (
+                {/* {user ? (
                     <li>
                         <button className='btn' onClick={onLogout}>
                             <FaSignOutAlt /> Logout
@@ -39,7 +39,34 @@ function Header() {
                             <FaUser /> Register
                         </Link>
                     </li>
-                </>)}                
+                </>)}                 */}
+                {user && user.accountType ==='admin' ? (<>
+                    <li>
+                        <Link to='/register'>
+                            <FaUser /> Register
+                        </Link>
+                    </li>
+                    <li>
+                        <button className='btn' onClick={onLogout}>
+                            <FaSignOutAlt /> Logout
+                        </button>
+                    </li>
+                </>                    
+                ) 
+                : user && user.accountType ==='user'? (
+                    <li>
+                        <button className='btn' onClick={onLogout}>
+                            <FaSignOutAlt /> Logout
+                        </button>
+                    </li>
+                )
+                : (
+                    <li>
+                        <Link to='/login'>
+                            <FaSignInAlt /> Login
+                        </Link>
+                    </li>
+                )}           
             </ul>
         </header>
     )
