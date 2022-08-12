@@ -67,6 +67,7 @@ const Update = () => {
         
           
           dispatch(update(userData))
+          alert('Profile updated')
           dispatch(logout())
           window.location.href = 'http://localhost:3000/'
       }

@@ -5,9 +5,18 @@ const User = require('../models/userModel')
 
 // @route GET /api/users
 const getUsers = asyncHandler( async (req, res) => {
-    const users = await User.find()
+    
+    // const users = await User.find()
+    // res.json(users)
+
+    const users = await User.find(
+        { "accountType": /user/i }, 
+    );
+
     res.json(users)
 })
+
+
 
 // @route POST /api/users
 const registerUser = asyncHandler(async (req, res) => {
