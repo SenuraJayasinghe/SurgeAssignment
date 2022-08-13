@@ -6,11 +6,6 @@ const nodemailer = require('nodemailer')
 
 // @route GET /api/users
 const getUsers = asyncHandler( async (req, res) => {
-
-    // const admin = await User.findById(req.user.id)
-    // if(admin.accountType !== 'admin') {
-    //     throw new Error('Admin Access Only')
-    // }
     
     const users = await User.find(
         { "accountType": /user/i }, 

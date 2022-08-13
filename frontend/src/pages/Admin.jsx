@@ -58,12 +58,6 @@ const customStyles = {
         navigate('/')
       } 
 
-      // Axios.get("/api/users/all", {
-      //   headers: {
-      //     Authorization: `Bearer ${user.token}`,
-      //   }  
-      // })
-
       Axios.get("/api/users/all")
       .then((res) => {
         setStudents(res.data)

@@ -61,14 +61,21 @@ const Update = () => {
 
         if (password !== password2) {
           toast.error('Passwords do not match')
-        } else {
+        } else{
+         if (mobile.length !== 10) {
+            toast.error('mobile number incorrect')
+         } 
+        
+         
+         else {
           const userData = {
             firstName,
             lastName,
             dateOfBirth,
             mobile,
             password,
-          }
+          
+        }
         
           
           dispatch(update(userData))
@@ -76,6 +83,7 @@ const Update = () => {
           dispatch(logout())
           window.location.href = 'http://localhost:3000/'
       }
+    }
     }
     
       if (isLoading) {

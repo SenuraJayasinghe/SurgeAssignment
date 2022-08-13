@@ -73,7 +73,7 @@ const Register = () => {
        <h1>
          <FaUserPlus /> Register
        </h1>
-       <p>Please create an account</p>
+       <p> Create an account</p>
     </section>
 
     <section className='form'>

@@ -26,7 +26,7 @@ function NoteItem({note}) {
     
 
   return (
-    <div className="goal">
+    <div className="note">
         <div className='time'>
             {new Date(note.createdAt).toLocaleDateString('en-US')}
         </div>
@@ -59,7 +59,7 @@ function NoteItem({note}) {
               />
             </div>
             <div className="form-group">
-              <button className="btn btn-block">Update Goal</button>
+              <button className="btn btn-block">Update Note</button>
             </div>
           </form>
         </section>
@@ -78,14 +78,3 @@ function NoteItem({note}) {
 }
 
 export default NoteItem
-
-{/* <button onClick={toUpdateNote} className="update">
-           Update
-        </button> */}
-
-    //     let navigate = useNavigate(); 
-    // const toUpdateNote = () =>{ 
-    //   let path = '\register'; 
-    //   navigate(path);
-    // }
-

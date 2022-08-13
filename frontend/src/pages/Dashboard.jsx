@@ -45,7 +45,6 @@ function Dashboard() {
 
   return <>
     <section className='heading'>
-      {/* code below: if user (i.e. logged in), show name */}
       <h1>Welcome {user && user.firstName}</h1>
       <p>Notes Dashboard</p>
     </section>
@@ -54,7 +53,7 @@ function Dashboard() {
 
     <section className="content">
       {notes.length > 0 ? (
-        <div className="goals">
+        <div className="notes">
           {notes.map((note) => (
             <NoteItem key={note._id} note={note} />
           ))}
@@ -65,4 +64,3 @@ function Dashboard() {
 }
 
 export default Dashboard
-{/* <NoteItem key={note._id} note={note} /> */}

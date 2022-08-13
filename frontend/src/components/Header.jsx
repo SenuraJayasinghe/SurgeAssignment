@@ -1,4 +1,4 @@
-import {FaSignInAlt, FaSignOutAlt, FaUser} from 'react-icons/fa'
+import {FaSignInAlt, FaSignOutAlt, FaUser, FaBookmark} from 'react-icons/fa'
 import {Link, useNavigate} from 'react-router-dom'
 import {useSelector, useDispatch} from 'react-redux'
 import {logout, reset} from '../features/auth/authSlice'
@@ -19,27 +19,9 @@ function Header() {
     return (
         <header className='header'>
             <div className='logo'>
-                <Link to='/'>Student Notes App</Link>
+                <Link to='/'>  <FaBookmark/> Student Notes App</Link>
             </div>
             <ul>
-                {/* {user ? (
-                    <li>
-                        <button className='btn' onClick={onLogout}>
-                            <FaSignOutAlt /> Logout
-                        </button>
-                    </li>
-                ) : (<>
-                    <li>
-                        <Link to='/login'>
-                            <FaSignInAlt /> Login
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to='/register'>
-                            <FaUser /> Register
-                        </Link>
-                    </li>
-                </>)}                 */}
                 {user && user.accountType ==='admin' ? (<>
                     <li>
                         <Link to='/register'>
