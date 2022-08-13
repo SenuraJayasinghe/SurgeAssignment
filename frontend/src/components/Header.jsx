@@ -19,7 +19,7 @@ function Header() {
     return (
         <header className='header'>
             <div className='logo'>
-                <Link to='/'>Add Notes</Link>
+                <Link to='/'>Student Notes App</Link>
             </div>
             <ul>
                 {/* {user ? (

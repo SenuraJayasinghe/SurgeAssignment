@@ -4,7 +4,7 @@ const { registerUser, loginUser, getMe, getUsers, updateUser, deleteUser } = req
 const {protect} = require('../middleware/authMiddleware')
 
 router.get('/all', getUsers)
-router.post('/', registerUser)
+router.post('/', protect, registerUser)
 router.post('/login', loginUser)
 router.put('/update', protect, updateUser)
 router.delete('/:id', deleteUser)

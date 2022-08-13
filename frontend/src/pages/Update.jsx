@@ -23,11 +23,13 @@ const Update = () => {
         lastName: user.lastName,
         dateOfBirth: '',
         mobile: user.mobile,
-        password: ''
+        password: '',
+        password2: '',
+
        
     })
 
-    const {firstName, lastName, dateOfBirth, mobile, password} = formData
+    const {firstName, lastName, dateOfBirth, mobile, password, password2} = formData
     
 
     useEffect(() => {
@@ -56,7 +58,10 @@ const Update = () => {
 
       const onSubmit = (e) => {
         e.preventDefault()
-     
+
+        if (password !== password2) {
+          toast.error('Passwords do not match')
+        } else {
           const userData = {
             firstName,
             lastName,
@@ -67,10 +72,11 @@ const Update = () => {
         
           
           dispatch(update(userData))
-          alert('Profile updated')
+           alert('Profile updated')
           dispatch(logout())
           window.location.href = 'http://localhost:3000/'
       }
+    }
     
       if (isLoading) {
         return <Spinner />
@@ -148,6 +154,18 @@ const Update = () => {
               required
               value={password}
               placeholder='Enter new password'
+              onChange={onChange}
+            />
+          </div>
+
+          <div className='form-group'>
+            <input
+              type='password'
+              className='form-control'
+              id='password2'
+              name='password2'
+              value={password2}
+              placeholder='Confirm password'
               onChange={onChange}
             />
           </div>

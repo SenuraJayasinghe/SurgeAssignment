@@ -91,7 +91,7 @@ h3 {
 
 .goals {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(1, 1fr);
   gap: 10px;
 }
 
@@ -101,6 +101,7 @@ h3 {
   padding: 10px  10px;
   position: relative;
   border-radius: 10px;
+  cursor: pointer;
   box-shadow: 3px 3px 20px rgba(5, 5, 5, 0.3);
   
 }
@@ -168,6 +169,23 @@ h3 {
   justify-content: center;
 }
 
+.btnAlt {
+  padding: 10px 20px;
+  border: 1px solid #482673;
+  border-radius: 5px;
+  background: #ffffff;
+  color: #482673;
+  font-size: 16px;
+  font-weight: 400;
+  cursor: pointer;
+  appearance: button;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  margin: 0 auto; 
+}
+
 .btn svg {
   margin-right: 8px;
 }
@@ -229,4 +247,45 @@ h3 {
   .heading p {
     font-size: 1.5rem;
   }
+}
+
+.table{
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.table td, .table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.table tr:nth-child(even){background-color: #d8cbe2;}
+
+.table tr:hover {background-color: rgb(213, 189, 243);}
+
+.table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #482673;
+  color: white;
+}
+
+.searchBar {
+  padding: 10px 80px 10px 80px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+}
+
+input::placeholder {
+  text-align: left !important;
+}
+
+.time{
+  padding-bottom: 10px;
+}
+
+.desc{
+  text-align: left;
 }

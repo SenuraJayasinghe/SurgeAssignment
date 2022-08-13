@@ -27,7 +27,7 @@ function NoteItem({note}) {
 
   return (
     <div className="goal">
-        <div>
+        <div className='time'>
             {new Date(note.createdAt).toLocaleDateString('en-US')}
         </div>
         {updating ? (
@@ -63,13 +63,14 @@ function NoteItem({note}) {
         </section>
       ) : (
         <span onClick={() => setUpdating(!updating)}>
-        <h2>{note.title}</h2>
-        <h4>{note.description}</h4>
+        <h3>{note.title}</h3>
+        <h5 className = "desc">{note.description}</h5>
         <button onClick={() => dispatch(deleteNote(note._id))} className="close">
             X
         </button>
         </span>
       )}
+     
     </div>
   ) 
 }

@@ -15,7 +15,9 @@ const Admin = () => {
   
   const [students, setStudents] = useState([]);
   const [search, setSearch] = useState("");
- 
+
+  
+  
 
 const [modalIsOpen, setModalIsOpen] = useState(false);
 const [modalData, setModalData] = useState(null);
@@ -31,25 +33,34 @@ const closeModal = () => {
 }
 
 const customStyles = {
+  overlay: {
+    position: 'fixed',
+    backgroundColor: 'transparent'
+  },
   content: {
     top: '35%',
-    left: '50%',
+    left: '45%',
     right: 'auto',
     bottom: 'auto',
     marginRight: '-50%',
     width: '60%',
     transform: 'translate(-40%, -10%)',
-  },
+    background: 'rgba(250, 250, 253, .5)',
+
+  }
 }
+
+// const config = {
+//   headers: {
+//     Authorization: `Bearer ${user.token}`,
+//   },
+// };
   
     useEffect(() => {
 
       if(!user) {
         navigate('/')
-      } else if(!(user.accountType === 'admin')) {
-        alert("Unauthorized access!")
-        navigate('/')
-      }
+      } 
 
         Axios.get("/api/users/all")
             .then((res) => {
@@ -60,18 +71,17 @@ const customStyles = {
     }, [user, navigate]);   
   
           return (
-                <div>
-                    <h2>
+                <div>              
+                    <h2 className='heading'>
                         Admin Dashboard
                     </h2>
                     <div>
-                      <input type="text" placeholder='Search By First Name...' onChange={(e) => {
+                      <input className='searchBar' type="text" placeholder='Search by name, email, id' onChange={(e) => {
                         setSearch(e.target.value);
                       }}/>
-                      <i className='bx bx-search'></i>
                     </div>            
                         <div>
-                            <table>
+                            <table className='table'>
                                 <thead>
                                   <tr>                              
                                     <th scope="col">First Name</th>                    
@@ -101,7 +111,7 @@ const customStyles = {
                                         <td>{student.email}</td>                           
                                         <td>
                                             <div>                                             
-                                                <button onClick={() => expandModal(student)}>view</button>
+                                                <button className='btnAlt' onClick={() => expandModal(student)}>view</button>
                                                 <Modal isOpen={modalIsOpen} onRequestClose={closeModal} style={customStyles}>
                                                     <h2>Student details</h2>
                                                     <p>First Name: {modalData && modalData.firstName}</p>
@@ -109,7 +119,7 @@ const customStyles = {
                                                     <p>Email: {modalData && modalData.email}</p>
                                                     <p>DOB: {modalData && modalData.dateOfBirth}</p>
                                                     <p>Contact Number: {modalData && modalData.mobile}</p>
-                                                    <button className="btnclose" onClick={closeModal}>Close</button>
+                                                    <button className="btnAlt" onClick={closeModal}>Close</button>
                                                 </Modal>
                                             </div>                                            
                                         </td>                                      

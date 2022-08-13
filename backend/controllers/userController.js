@@ -5,6 +5,11 @@ const User = require('../models/userModel')
 
 // @route GET /api/users
 const getUsers = asyncHandler( async (req, res) => {
+
+    // const admin = await User.findById(req.user.id)
+    // if(admin.accountType != 'admin') {
+    //     throw new Error('Admin Access Only')
+    // }
     
     // const users = await User.find()
     // res.json(users)
@@ -22,6 +27,12 @@ const getUsers = asyncHandler( async (req, res) => {
 const registerUser = asyncHandler(async (req, res) => {
     const {firstName, lastName, email, dateOfBirth,
         mobile, password} = req.body
+
+    const admin = await User.findById(req.user.id)
+    if(admin.accountType != 'admin') {
+        throw new Error('Admin Access Only')
+    }
+
 
     if( !email || !password){
        res.status(400)
