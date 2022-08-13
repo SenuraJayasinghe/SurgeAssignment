@@ -45,7 +45,7 @@ npm run server
 ```
 * If using a local mongoDB server, you seed it by executing the follwing
 ```
-node seeeds.js
+node seeds.js
 ```
 
 * You can now view the system on http://localhost:3000!
