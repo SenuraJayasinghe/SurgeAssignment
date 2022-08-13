@@ -4,7 +4,7 @@ A note taking web apllication developed using MERN stack.
 
 ## Description
 
-A simple application in which users can add, update and delete notes. System admin can register new users and view details of existing users.
+A simple application in which users can add, update and delete notes. System admin can register new users and view details of existing users. First time users will be sent an email request to change the temporary password set by the admin.
 
 The backend of the application was built with RESTful web services using NodeJS and ExpressJS. MongoDB was used as the database. 
 The frontend was built using ReactJS with REDUX toolkit for state management. JWT was used to implement role-based authetication and
@@ -33,7 +33,7 @@ npm install
 
 ### Executing program
 
-* A sample .env file is included in the repository. Set up mongoDB, nodemailer, Google Cloud Platform project with OAuth credentials for gmail, JWT secret key and configure the .env file as needed.
+* A sample .env file is included in the repository. Set up mongoDB, nodemailer, Google Cloud Platform project with OAuth credentials for gmail, JWT secret key and configure the .env file as needed. (Check spam email for first time user email!)
 
 * Run the following command in the frontend directory 
 ```
