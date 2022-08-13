@@ -1,0 +1,22 @@
+Surge Questions
+
+1)	Explaining what is design pattern and how we can use design patterns in projects. – Design patterns are various practices that can be used to provide solutions for general problems faced by developers when designing software’s. These patterns help speed up the development process as they have been tested and proven. By providing a general solution for a particular project, we are able to reuse code and solve similar problems in different solutions.
+
+2)	What is DTO and explain the use of it –  A data Transfer Object is design pattern that is used to carry sensitive data from one process to another. This allows the communication between two systems without the risk of leaking your data. A DTO can be used when sending responses within your database so that you are able to only transfer the required data.
+
+      Such a process helps reduce the number of method calls by batching up multiple parameters in a single method call.
+
+3)	How are you going to store secrets in an application without exposing it to the internet? – A few common methods are:
+ Setting restrictions so that the API key can only be accessed via a specified URL. Concealing your Secrets and your keys in an environment variable file (.env) allows developers to upload their projects with sharing their private keys. When using platforms such as Git, users can add the env file in the gitignore file so that it would not get commited.
+
+4) What is JWT and how does it work? –  Jason Web Tokens are an internet standard that was proposed to create data that shares security information between the client and the server. Each token contains a unique signature that holds encrypted JSON objects that carry a certain number of claims. Claims can carry information such as who issued the token, its validity period and more. Furthermore, these tokens are signed using a private secret or key so that the claims within the token cannot be changed.
+Once decoded the JSON object contains the header, payload and the signature. Once the validity is checked by comparing the payload’s signature and the signature sent, it can then use the claims to verify or deny a request.
+
+
+
+5) What is the difference between SQL and NoSQL databases? – SQL databases which are predominantly called relational databases is defined mainly using structured query language. While being a safe choice and very adaptable it can be limiting as you may have to use predefined schemas. NoSQL databases contain dynamic schemas that allows for unstructured data. 
+While SQL databases are scalable via means such as increasing RAM, SSD or CPU, NoSQL databases are able to scale even better and accommodate more traffic by methods such as sharding or adding more servers. This makes NoSQL databases the better choice when it comes to larger ever changing data sets. Also SQL databases are table based while NoSQL databases follow a key:  value pairs.
+
+
+6) Suggest a good state management for frontend application and explain why you recommend it – 
+ Redux is a great management tool that can be used due to its many advantages. It’s ability to increase the predictability of a state due its use of pure reducer functions that provide the same outcome when the same action is passed as immutable. Redux store helps in improving the performance by skipping redundant re-renders and ensuring that a component re-renders only when its data has actually changed. This helps in performance specially in large scale applications.  Also its great developing community and easy debugging processes make it favorite to chosen from.
