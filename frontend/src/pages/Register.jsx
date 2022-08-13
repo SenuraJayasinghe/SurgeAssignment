@@ -83,6 +83,7 @@ const Register = () => {
               type='text'
               className='form-control'
               id='firstName'
+              required
               name='firstName'
               value={firstName}
               placeholder='Enter first name'
@@ -94,6 +95,7 @@ const Register = () => {
               type='text'
               className='form-control'
               id='lastName'
+              required
               name='lastName'
               value={lastName}
               placeholder='Enter last name'
@@ -105,6 +107,7 @@ const Register = () => {
               type='email'
               className='form-control'
               id='email'
+              required
               name='email'
               value={email}
               placeholder='Enter email'
@@ -116,6 +119,7 @@ const Register = () => {
               type='password'
               className='form-control'
               id='password'
+              required
               name='password'
               value={password}
               placeholder='Enter temporary password'
@@ -127,6 +131,7 @@ const Register = () => {
               type='password'
               className='form-control'
               id='password2'
+              required
               name='password2'
               value={password2}
               placeholder='Confirm temporary password'

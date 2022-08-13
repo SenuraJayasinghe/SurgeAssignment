@@ -28,6 +28,7 @@ function NoteForm() {
                         type="text" 
                         name="title" 
                         id="title" 
+                        required
                         value={title} 
                         onChange={(e) => setTitle(e.target.value)}/>
                 </div>
@@ -37,6 +38,7 @@ function NoteForm() {
                         type="text" 
                         name="description" 
                         id="description" 
+                        required
                         value={description} 
                         onChange={(e) => setDescription(e.target.value)}/>
                 </div>

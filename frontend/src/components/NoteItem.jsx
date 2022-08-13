@@ -7,8 +7,8 @@ import {updateNote} from '../features/notes/noteSlice'
 function NoteItem({note}) {
 
   const [updating, setUpdating] = useState(false)
-  const [title, setTitle] = useState('')
-  const [description, setDescription] = useState('')
+  const [title, setTitle] = useState(note.title)
+  const [description, setDescription] = useState(note.description)
 
 
     const dispatch = useDispatch()
@@ -41,6 +41,7 @@ function NoteItem({note}) {
                 type="text"
                 name="title"
                 id="title"
+                required
                 value={title}
                 placeholder="Update Title"
                 onChange={(e) => setTitle(e.target.value)}
@@ -51,6 +52,7 @@ function NoteItem({note}) {
                 type="text"
                 name="description"
                 id="description"
+                required
                 value={description}
                 placeholder="Update description"
                 onChange={(e) => setDescription(e.target.value)}

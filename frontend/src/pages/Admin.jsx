@@ -4,6 +4,7 @@ import {useNavigate} from 'react-router-dom'
 import {useSelector} from 'react-redux'
 import Axios from 'axios';
 import Modal from 'react-modal'
+import Spinner from '../components/Spinner';
 
 const Admin = () => {
 
@@ -16,7 +17,7 @@ const Admin = () => {
   const [students, setStudents] = useState([]);
   const [search, setSearch] = useState("");
 
-  
+  const [isLoading, setIsLoading] = useState(true)
   
 
 const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -50,11 +51,6 @@ const customStyles = {
   }
 }
 
-// const config = {
-//   headers: {
-//     Authorization: `Bearer ${user.token}`,
-//   },
-// };
   
     useEffect(() => {
 
@@ -62,13 +58,24 @@ const customStyles = {
         navigate('/')
       } 
 
-        Axios.get("/api/users/all")
-            .then((res) => {
-                setStudents(res.data)
-                console.log(res.data);
-            })
+      // Axios.get("/api/users/all", {
+      //   headers: {
+      //     Authorization: `Bearer ${user.token}`,
+      //   }  
+      // })
 
+      Axios.get("/api/users/all")
+      .then((res) => {
+        setStudents(res.data)
+        setIsLoading(false)
+        console.log(res.data);
+      })
+      
     }, [user, navigate]);   
+
+    if(isLoading) {
+      return <Spinner />
+    }
   
           return (
                 <div>              
@@ -93,12 +100,12 @@ const customStyles = {
                                 <tbody>
                                 {students
                                 .filter((student) => {                                    
-                                    if(search == "") {
+                                    if(search === "") {
                                         return student
                                     }else if(student._id.toString().toLowerCase().includes(search.toLowerCase())
-                                      ||student.firstName.toString().toLowerCase().includes(search.toLowerCase())
-                                      ||student.lastName.toString().toLowerCase().includes(search.toLowerCase())
-                                      ||student.email.toString().toLowerCase().includes(search.toLowerCase())                                      
+                                      || student.firstName.toString().toLowerCase().includes(search.toLowerCase())
+                                      || student.lastName.toString().toLowerCase().includes(search.toLowerCase())
+                                      || student.email.toString().toLowerCase().includes(search.toLowerCase())                                        
                                     ) {
                                         return student
                                     }                                      

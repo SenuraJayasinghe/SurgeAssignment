@@ -80,6 +80,7 @@ function Login() {
                     className='form-control' 
                     name="email" 
                     id="email" 
+                    required
                     value={email} 
                     placeholder='Enter your email' 
                     onChange={onChange} />
@@ -89,6 +90,7 @@ function Login() {
                     className='form-control' 
                     name="password" 
                     id="password" 
+                    required
                     value={password} 
                     placeholder='Enter password' 
                     onChange={onChange} />
