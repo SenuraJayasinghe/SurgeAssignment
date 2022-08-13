@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import {useSelector, useDispatch} from 'react-redux'
 import {useNavigate} from 'react-router-dom'
 import {toast} from 'react-toastify'
-import { FaUser } from 'react-icons/fa'
+import { FaUserPlus } from 'react-icons/fa'
 import {register, reset} from '../features/auth/authSlice'
 import Spinner from '../components/Spinner'
 
@@ -30,9 +30,9 @@ const Register = () => {
         toast.error(message)
       }
   
-      if (isSuccess || user) {
+      if(!user) {
         navigate('/')
-      }
+      } 
   
       dispatch(reset())
     }, [user, isError, isSuccess, message, navigate, dispatch])
@@ -59,6 +59,7 @@ const Register = () => {
           }
     
           dispatch(register(userData))
+          navigate('/admin')
         }
       }
     
@@ -70,9 +71,9 @@ const Register = () => {
   <>
     <section className='heading'>
        <h1>
-         <FaUser /> Register
+         <FaUserPlus /> Register
        </h1>
-       <p>Please create an account</p>
+       <p> Create an account</p>
     </section>
 
     <section className='form'>
@@ -82,6 +83,7 @@ const Register = () => {
               type='text'
               className='form-control'
               id='firstName'
+              required
               name='firstName'
               value={firstName}
               placeholder='Enter first name'
@@ -93,6 +95,7 @@ const Register = () => {
               type='text'
               className='form-control'
               id='lastName'
+              required
               name='lastName'
               value={lastName}
               placeholder='Enter last name'
@@ -104,6 +107,7 @@ const Register = () => {
               type='email'
               className='form-control'
               id='email'
+              required
               name='email'
               value={email}
               placeholder='Enter email'
@@ -115,6 +119,7 @@ const Register = () => {
               type='password'
               className='form-control'
               id='password'
+              required
               name='password'
               value={password}
               placeholder='Enter temporary password'
@@ -126,6 +131,7 @@ const Register = () => {
               type='password'
               className='form-control'
               id='password2'
+              required
               name='password2'
               value={password2}
               placeholder='Confirm temporary password'
